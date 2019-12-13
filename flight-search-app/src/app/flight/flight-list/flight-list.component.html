@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <h2>Simple Flight Search App</h2>
+  <p>Search flights</p> 
+  
+  <div class="row">
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="usr">Flight Number:</label>
+        <input type="text" class="form-control" id="fNo" [(ngModel)]="flightNumber">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="usr">Origin*:</label>
+        <input type="text" class="form-control" id="orig" [(ngModel)]="origin">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="usr">Destination*:</label>
+        <input type="text" class="form-control" id="dest" [(ngModel)]="destination">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <label for="usr">Departure*:</label>
+        <input type="text" class="form-control" id="dept" [(ngModel)]="departure">
+      </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-group">            
+            <button type="button" (click)="search()" class="btn btn-primary" style="margin-top:30px;">Search</button>
+          </div>
+      
+    </div>
+  
+  </div>
+  
+  <span *ngIf="isError" style="color:red;">*Origin, Destination and Departure are mandatory</span>
+  <br>           
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Flight Number</th>
+        <th>Carrier</th>
+        <th>Origin</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Arrival</th>
+        <th>Aircraft</th>
+        <th>Distance</th>
+        <th>Travel Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <span *ngIf="flightList?.length == 0"> No data available</span>
+      <tr *ngFor="let flight of flightList" >
+        <td>{{flight.flightNumber}}</td>
+        <td>{{flight.carrier}}</td>
+        <td>{{flight.origin}}</td>        
+        <td>{{flight.departure}}</td>
+        <td>{{flight.destination}}</td>
+        <td>{{flight.arrival}}</td>
+        <td>{{flight.aircraft}}</td>
+        <td>{{flight.distance}}</td>
+        <td>{{flight.travelTime}}</td>
+        <td>{{flight.status}}</td>
+        
+      </tr>     
+    </tbody>
+  </table>
+</div>
